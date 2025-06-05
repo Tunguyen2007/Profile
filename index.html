@@ -7,6 +7,38 @@
     <link rel="stylesheet" href="style1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="canonical" href="https://tunguyen2007.github.io/Profile/">
+    <style>
+        body {
+            background-image: url('https://mizu.pages.dev/src/assets/images/backgrounds/bg_low.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.85); 
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+        .game-items .item,
+        .social-card,
+        .popup-content,
+        .music-control-bar {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(30, 41, 59, 0.8);
+        }
+    </style>
 </head>
 <body>
     <!-- Header Items -->
