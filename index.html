@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="canonical" href="https://tunguyen2007.github.io/Profile/">
+</head>
+<body>
+    <!-- Header Items -->
+    <header class="game-items">
+        <div class="item">
+            <i class="fas fa-heart fa-beat"></i>
+            <span>Welcome to my profile</span>
+        </div>
+        <div class="item">
+            <i class="fas fa-star fa-spin"></i>
+            <span>Best wishes</span>
+        </div>
+    </header>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-item">
+            <span class="status-dot online"></span>
+            <span>Online</span>
+        </div>
+        <div class="status-item">
+            <i class="fas fa-clock"></i>
+            <div class="time-display">
+                <span id="vietnam-date" style="font-size: 0.8em;"></span>
+                <span id="vietnam-time" style="font-size: 0.9em;"></span>
+            </div>
+            <script>
+                function updateTime() {
+                    const now = new Date();
+                    const timeString = now.toLocaleTimeString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
+                    const dateString = now.toLocaleDateString('vi-VN', { 
+                        timeZone: 'Asia/Ho_Chi_Minh',
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    document.getElementById('vietnam-time').textContent = timeString;
+                    document.getElementById('vietnam-date').textContent = dateString;
+                }
+                updateTime();
+                setInterval(updateTime, 1000);
+            </script>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="content">
+        <section class="profile">
+            <div class="profile-image">
+                    <img src="hi.jpg" alt="Profile Image">
+            </div>
+            <h1 class="name">Nguyễn Anh Tú</h1>
+            <div class="tagline">
+                <div class="badges">
+                    <span>NEET</span>
+                    <span>Creative</span>
+                    <span>Friendly</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <p class="bio">I'm Nguyễn Tú, a NEET who loves video games, anime</p>
+            <div class="interests">
+                <span class="interest-tag" onclick="toggleGameList()">🎮 Gaming</span>
+                <span class="interest-tag">💻 Coding</span>
+                <span class="interest-tag">💪 Gym</span>
+                <span class="interest-tag" onclick="toggleMusicPlayer()">🎵 Music</span>
+            </div>
+        </section>
+
+        <!-- Gaming List Popup -->
+        <div id="gamePopup" class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3>My Favorite Games</h3>
+                    <button class="close-button" onclick="toggleGameList()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="game-list">
+                    <div class="game-item">
+                        <img src="https://static.wikia.nocookie.net/gensin-impact/images/8/80/Genshin_Impact.png/revision/latest?cb=20240331104358" style="width: 24px; height: 24px; margin-right: 15px;">
+                        <a href="https://genshin.hoyoverse.com/en/home" target="_blank" style="text-decoration: none; color: inherit;"> <span>Genshin Impact</span></a>
+                    </div>
+                    <div class="game-item">
+                        <img src="https://play-lh.googleusercontent.com/wEgle763Zm8qmttBKYmVyOJ65h4xNOHTgnPXy6-wo1GygMiU_QwGCX9OvzTZB2I82wg" style="width: 24px; height: 24px; margin-right: 15px;">
+                        <a href="https://wutheringwaves.kurogames.com/en/" target="_blank" style="text-decoration: none; color: inherit;"> <span>Wuthering Waves</span></a>
+                    </div>
+                    <div class="game-item">
+                        <img src="https://static.wikia.nocookie.net/houkai-star-rail/images/8/84/Honkai_Star_Rail_App.png/revision/latest/scale-to-width/360?cb=20240325233130" style="width: 24px; height: 24px; margin-right: 15px;">
+                        <a href="https://hsr.hoyoverse.com/en-us/" target="_blank" style="text-decoration: none; color: inherit;"> <span>Honkai Star Rail</span></a>
+                    </div>
+                    <div class="game-item">
+                        <img src="https://play-lh.googleusercontent.com/7cIIPlWm4m7AGqVpEsIfyL-HW4cQla4ucXnfalMft1TMIYQIlf2vqgmthlZgbNAQoaQ" style="width: 24px; height: 24px; margin-right: 15px;">
+                        <span>Roblox</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Music Player Popup -->
+        <div id="musicPopup" class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3>My Music Player</h3>
+                    <button class="close-button" onclick="toggleMusicPlayer()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="music-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search for a song...">
+                        <button onclick="searchYoutube()">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                    <div class="playlist">
+                        <div class="playlist-item" onclick="playMusic('FN7ALfpGxiI', 'Nơi Này Có Anh', 'Sơn Tùng M-TP', 'https://i.ytimg.com/vi/FN7ALfpGxiI/hqdefault.jpg')">
+                            <div class="song-info">
+                                <img src="https://i.ytimg.com/vi/FN7ALfpGxiI/hqdefault.jpg" alt="Nơi Này Có Anh">
+                                <div class="song-details">
+                                    <span class="song-title">Nơi Này Có Anh</span>
+                                    <span class="song-artist">Sơn Tùng M-TP</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="playlist-item" onclick="playMusic('VLvBlG49BKA', 'thap roi tu do', 'MCK', 'https://i.ytimg.com/vi/VLvBlG49BKA/hqdefault.jpg')">
+                            <div class="song-info">
+                                <img src="https://i.ytimg.com/vi/VLvBlG49BKA/hqdefault.jpg" alt="thap roi tu do">
+                                <div class="song-details">
+                                    <span class="song-title">thap roi tu do</span>
+                                    <span class="song-artist">MCK</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="playlist-item" onclick="playMusic('6sqMOd2T_Sk', 'Moshi Moshi', 'Nozomi Kitay & GAL D', 'https://i.ytimg.com/vi/6sqMOd2T_Sk/hqdefault.jpg')">
+                        <div class="song-info">
+                            <img src="https://i.ytimg.com/vi/6sqMOd2T_Sk/hqdefault.jpg" alt="Moshi Moshi">
+                            <div class="song-details">
+                                <span class="song-title">Moshi Moshi</span>
+                                <span class="song-artist">Nozomi Kitay & GAL D</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div id="player" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fixed Music Control Bar -->
+        <div id="musicControlBar" class="music-control-bar">
+            <div class="now-playing">
+                <img id="currentSongImg" src="" alt="Current Song">
+                <div class="current-song-info">
+                    <span id="currentSongTitle"></span>
+                    <span id="currentSongArtist"></span>
+                </div>
+            </div>
+            <div class="controls">
+                <button onclick="toggleLoop()" id="loopButton">
+                    <i class="fas fa-redo"></i>
+                </button>
+                <button onclick="playPauseMusic()" id="playPauseButton">
+                    <i class="fas fa-play"></i>
+                </button>
+                <div class="volume-control">
+                    <i class="fas fa-volume-up"></i>
+                    <input type="range" id="volumeSlider" min="0" max="100" value="100" onchange="changeVolume(this.value)">
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Links Group 1 -->
+        <div class="social-group">
+            <h3 class="group-title">Connect With Me</h3>
+            <div class="social-links">
+                <a href="" class="social-card discord">
+                    <div class="card-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <div class="card-content">
+                        <strong>Discord</strong>
+                        <span>Không Rõ</span>
+                        <span class="action">Let's Chat!</span>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                <a href="https://www.facebook.com/rainkid258" target="_blank" class="social-card facebook">
+                    <div class="card-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <div class="card-content">
+                        <strong>Facebook</strong>
+                        <span>Nguyễn Anh Tú</span>
+                        <span class="action">Add Friend</span>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Social Links Group 2 -->
+        <div class="social-group">
+            <h3 class="group-title">Gaming & Entertainment</h3>
+            <div class="social-links">
+                <a href="" class="social-card steam">
+                    <div class="card-icon">
+                        <i class="fab fa-steam"></i>
+                    </div>
+                    <div class="card-content">
+                        <strong>Steam</strong>
+                        <span>Nguyễn Anh Tú</span>
+                        <span class="action">Play Together</span>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                <a href="" class="social-card spotify">
+                    <div class="card-icon">
+                        <i class="fab fa-spotify"></i>
+                    </div>
+                    <div class="card-content">
+                        <strong>Spotify</strong>
+                        <span>Nguyễn Anh Tú</span>
+                        <span class="action">Listen Along</span>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Made with 💖 and lots of ☕</p>
+            <p class="footer-note">Thanks for visiting!</p>
+        </div>
+    </footer>
+
+<style>
+.music-container {
+    padding: 20px;
+}
+
+.playlist {
+    margin-top: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.playlist-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.song-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-title {
+    font-weight: bold;
+    color: #fff;
+}
+
+.song-artist {
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+.song-duration {
+    color: #aaa;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.search-box button:hover {
+    background: var(--secondary-color);
+}
+
+.music-control-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(24, 24, 24, 0.98);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    display: none;
+}
+
+.music-control-bar.active {
+    display: flex;
+}
+
+.now-playing {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.now-playing img {
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.current-song-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.current-song-info span:first-child {
+    color: #fff;
+    font-weight: bold;
+}
+
+.current-song-info span:last-child {
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.controls button:hover {
+    transform: scale(1.1);
+}
+
+.controls button.active {
+    color: var(--primary-color);
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+}
+
+#volumeSlider {
+    width: 100px;
+    accent-color: var(--primary-color);
+}
+
+.playlist-item {
+    padding: 15px;
+}
+</style>
+
+<script>
+function toggleGameList() {
+    const popup = document.getElementById('gamePopup');
+    popup.classList.toggle('active');
+}
+
+// YouTube API Integration
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '250',
+        width: '100%',
+        videoId: 'FN7ALfpGxiI',
+        playerVars: {
+            'playsinline': 1,
+            'controls': 0
+        },
+        events: {
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function searchYoutube() {
+    const searchTerm = document.getElementById('searchInput').value;
+    const apiKey = 'AIzaSyDegVugCiW3nSH8Ia92Kt3L6jjGWnwypP8';
+    
+    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchTerm}&type=video&key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            if(data.items && data.items.length > 0) {
+                const videoId = data.items[0].id.videoId;
+                player.loadVideoById(videoId);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function toggleMusicPlayer() {
+    const popup = document.getElementById('musicPopup');
+    popup.classList.toggle('active');
+}
+
+let isPlaying = false;
+let isLooping = false;
+let currentVideoId = '';
+
+function playMusic(videoId, title, artist, thumbnail) {
+    currentVideoId = videoId;
+    if (player) {
+        player.loadVideoById(videoId);
+        document.getElementById('currentSongImg').src = thumbnail;
+        document.getElementById('currentSongTitle').textContent = title;
+        document.getElementById('currentSongArtist').textContent = artist;
+        document.getElementById('musicControlBar').classList.add('active');
+        document.getElementById('playPauseButton').innerHTML = '<i class="fas fa-pause"></i>';
+        isPlaying = true;
+    }
+}
+
+function playPauseMusic() {
+    if (!player || !currentVideoId) return;
+    
+    if (isPlaying) {
+        player.pauseVideo();
+        document.getElementById('playPauseButton').innerHTML = '<i class="fas fa-play"></i>';
+    } else {
+        player.playVideo();
+        document.getElementById('playPauseButton').innerHTML = '<i class="fas fa-pause"></i>';
+    }
+    isPlaying = !isPlaying;
+}
+
+function toggleLoop() {
+    isLooping = !isLooping;
+    if (player) {
+        player.setLoop(isLooping);
+    }
+    document.getElementById('loopButton').classList.toggle('active');
+}
+
+function changeVolume(value) {
+    if (player) {
+        player.setVolume(value);
+    }
+}
+
+// Update player events
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.ENDED && isLooping) {
+        player.playVideo();
+    }
+}
+</script>
+</body>
+</html> 
